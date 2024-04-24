@@ -16,7 +16,7 @@ export const requestProductsByQuery = async (query = "") => {
   return data;
 };
 
-export const requestProductDetailsById = async (productId) => {
+export const requestProductDetailrequestContactsById = async (productId) => {
   const { data } = await instance.get(`/products/${productId}`);
 
   return data;
