@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { requestContactsById } from "../services/api";
+import { requestContacts } from "../services/api";
 
 export const apiRequestContacts = createAsyncThunk (
     "contacts/getContacts",
-    async (contactId, thunkApi) => {
+    async (_, thunkApi) => {
         try {
-          const data = await requestContactsById(contactId);
+          const data = await requestContacts();
     
           return data; // ТЕ, ЩО ПОВЕРТАЄТЬСЯ З САНКИ ПОТРАПЛЯЄ В action.payload
         } catch (error) {

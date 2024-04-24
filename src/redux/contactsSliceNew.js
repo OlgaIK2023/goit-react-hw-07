@@ -17,7 +17,13 @@ export const INITIAL_STATE = {
 const contactsSliceNew = createSlice({
   name: "contacts",
   initialState: INITIAL_STATE,
-  extraReducers: (builder) => builder.addCase(apiRequestContacts.pending, (state) => {
+//   reducers: {changeFilter: (state, action) => {
+      
+//   }}
+  extraReducers: (builder) => builder
+
+  //Get all contacts
+  .addCase(apiRequestContacts.pending, (state) => {
     state.isLoading = true;
     state.isError = false;
   })

@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://dummyjson.com",
+  baseURL: "https://https://66297acf67df268010a0db3a.mockapi.io/",
 });
 
-export const requestProducts = async () => {
-  const { data } = await instance.get("/products");
+export const requestContacts = async () => {
+  const { data } = await instance.get("/contacts");
 
   return data;
 };
