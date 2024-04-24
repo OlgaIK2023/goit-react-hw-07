@@ -1,0 +1,18 @@
+.contact_list{
+  display: flex;
+  justify-content: center;
+  gap:30px;
+  flex-wrap: wrap;
+   }
+
+.contact_list>li{
+   
+  border-radius: 8px;
+  min-width: 250px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }
+
+  
