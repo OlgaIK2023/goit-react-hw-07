@@ -5,9 +5,9 @@ import SearchBox from "./components/SearchBox/SearchBox";
 import Loader from "./components/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { apiRequestContacts } from "../redux/contactsOps";
-import { selectLoading,selectError } from '../redux/selectors';
-// import { nanoid } from "nanoid";
+import { apiRequestContacts } from "./redux/contactsOps";
+import { selectLoading,selectError } from './redux/selectors';
+
 
 
 //APP code below
