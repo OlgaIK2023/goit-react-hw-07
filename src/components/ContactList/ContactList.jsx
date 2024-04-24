@@ -1,9 +1,8 @@
 import Contact from "../Contact/Contact";
-import Loader from "../Loader/Loader";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+
 
 import css from "./ContactList.module.css";
-import { useSelector, useDispatch, useEffect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import {selectContacts } from '../../redux/contactsSlice'
 import { selectNameFilter } from "../../redux/filtersSlice"
@@ -23,8 +22,7 @@ const ContactList=() =>{
 
   return (
     <div>
-    {isLoading && <Loader />}
-      {isError && <ErrorMessage message={error} />}
+    
       <ul className={css.contact_list}>
       {(filteredContacts.length===0)? (<p>You do not have any contact!</p> ):
         filteredContacts.map(contact => {
