@@ -1,13 +1,27 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { requestContacts } from "../services/api";
+import axios from "axios";
+
+
+
+// const instance = axios.create({
+//   baseURL: "https://66297acf67df268010a0db3a.mockapi.io/",
+// });
+
+// export const requestContacts = async () => {
+//   const { data } = await instance.get("/contacts");
+
+//   return data;
+// };
+
+
+axios.defaults.baseURL = "https://66297acf67df268010a0db3a.mockapi.io";
 
 export const apiRequestContacts = createAsyncThunk (
-    "contacts/getContacts",
+    "contacts/fetchAll",
     async (_, thunkApi) => {
         try {
-          const data = await requestContacts();
-    
-          return data; // ТЕ, ЩО ПОВЕРТАЄТЬСЯ З САНКИ ПОТРАПЛЯЄ В action.payload
+          const response = await axios.get('/contacts');
+          return response.data;  // ТЕ, ЩО ПОВЕРТАЄТЬСЯ З САНКИ ПОТРАПЛЯЄ В action.payload
         } catch (error) {
           return thunkApi.rejectWithValue(error.message);
         }
@@ -15,12 +29,26 @@ export const apiRequestContacts = createAsyncThunk (
 );
 
 
-// async () => {
-//     try {
-//         const response = await fetch('https://goit-phonebook-api.herokuapp.com/contacts');
-//         const data = await response.json();
-//         return data;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
+export const addContact = createAsyncThunk(
+  'contacts/addContact',
+  async (finalContact, thunkAPI) => {
+    try {
+      const response = await axios.post('/contacts',  finalContact );
+        return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteContact = createAsyncThunk(
+  'contacts/deleteContact',
+  async (contactId, thunkAPI) => {
+    try {
+        const response = await axios.delete(`/contacts/${contactId}`);
+        return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
